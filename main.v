@@ -1,17 +1,17 @@
 module main(
-	input[5:0]sw_,
-	input[9:0] dipSwitch,
-	input clk,
+    input[5:0]sw_,
+    input[9:0] dipSwitch,
+    input clk,
 
-	output[6:0] dp0,
-	output[6:0] dp1,
-	output[6:0] dp2,
-	output[6:0] dp3,
-	output[6:0] dp4,
-	output[6:0] dp5,
+    output[6:0] dp0,
+    output[6:0] dp1,
+    output[6:0] dp2,
+    output[6:0] dp3,
+    output[6:0] dp4,
+    output[6:0] dp5,
 
-	output buzzer, 
-	output[5:0] light
+    output buzzer, 
+    output[5:0] light
 );
 
 // **** SETUP **** //
@@ -27,8 +27,8 @@ ButtonDebouncer btn_db6(clk, sw_[5], sw[5]);
 // **** REGISTER **** //
 reg[4:0] hour = 0, alarm_hour = 0; // 0 to 24
 reg[5:0] min = 0, sec = 0, 
-	alarm_min = 0, alarm_sec = 0,
-	stop_min = 0, stop_sec = 0; // 0 to 60
+        alarm_min = 0, alarm_sec = 0,
+        stop_min = 0, stop_sec = 0; // 0 to 60
 reg[6:0] stop_msec = 0; // 0 to 99
 
 reg[??] state, nextState; // FIXME : 몇 개가 될 지 일단 보류
