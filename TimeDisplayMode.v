@@ -1,11 +1,20 @@
 module TimeDisplayMode(
-    input sw,
-    input TSmode_state,
-    input SSmode_state,
-    output TDmode_state
-);
-// 각각의 모드에서 어떤 state인가에 따라서 TDmode 내 state 이동을 결정한다
+	input clk,
+	input sw,
+	input [5:0] hour_in,
+	input [5:0] min_in,
+	input [5:0] sec_in,
+	output am,
+	output pm,
+	output [5:0] hour_out,
+	output [5:0] min_out,
+	output [5:0] sec_out,
+	output ts
+    );
+
+wire enable;
+TimeDisplayModeSelector tdms(clk, sw, enable);
+TSmode tsmode(enable, ts, hour_in, min_in, sec_in, am, pm, hour_out, min_out, sec_out);
 
 
 endmodule
-
